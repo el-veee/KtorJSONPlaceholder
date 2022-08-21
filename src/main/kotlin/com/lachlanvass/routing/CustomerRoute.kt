@@ -5,19 +5,16 @@ import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.coroutines.withTimeout
 
 fun Route.customerRouting(customerStorage: List<Customer>) {
     route("/customer") {
         get {
 
-            withTimeout(100L) {
 
-                if (customerStorage.isNotEmpty()) {
-                    call.respond(customerStorage)
-                } else {
-                    call.respondText("No customers found:", status = HttpStatusCode.OK )
-                }
+            if (customerStorage.isNotEmpty()) {
+                call.respond(customerStorage)
+            } else {
+                call.respondText("No customers found:", status = HttpStatusCode.OK)
             }
         }
         get("{id?}") {
