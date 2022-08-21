@@ -1,8 +1,9 @@
-package com.example
+
+package com.lachlanvass
 
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import com.example.plugins.*
+import com.lachlanvass.plugins.*
 
 fun main() {
     embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
@@ -10,4 +11,5 @@ fun main() {
         configureSerialization()
         configureRouting()
     }.start(wait = true)
+
 }
